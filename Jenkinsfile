@@ -13,6 +13,13 @@ dockerTemplate{
             sh "git remote set-url origin git@github.com:fabric8io/${repo}.git"
             def newVersion = getNewVersion {}
 
+            stage 'tag'
+            container('clients') {
+                gitTag{
+                    releaseVersion = newVersion
+                }
+            }
+
             stage 'build'
             container('docker') {
                  sh "docker build -t fabric8/${repo} ."
