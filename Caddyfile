@@ -1,0 +1,18 @@
+0.0.0.0:8080
+
+root /var/www/html
+
+log stdout
+
+errors stdout
+
+ext .html .htm .php
+
+browse
+prometheus
+
+upload / { 
+  to "/var/www/html"
+  yes_without_tls
+  silent_auth_errors
+}
