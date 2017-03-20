@@ -17,6 +17,7 @@ dockerTemplate{
             container('clients') {
                 gitTag{
                     releaseVersion = newVersion
+                    skipVersionPrefix = true
                 }
             }
 
