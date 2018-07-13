@@ -1,5 +1,5 @@
 #!/usr/bin/groovy
-@Library('github.com/fabric8io/fabric8-pipeline-library@master')
+@Library('github.com/rupalibehera/fabric8-pipeline-library@update_caddy_12_07_18')
 def utils = new io.fabric8.Utils()
 def repo = 'caddy-server'
 dockerTemplate{
