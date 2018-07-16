@@ -1,6 +1,7 @@
 #!/usr/bin/groovy
-@Library('github.com/rupalibehera/fabric8-pipeline-library@fix_caddy_server_pipeline')
+@Library('github.com/fabric8io/fabric8-pipeline-library@master')
 def utils = new io.fabric8.Utils()
+def flow = new io.fabric8.Fabric8Commands()
 def repo = 'caddy-server'
 dockerTemplate{
     clientsNode{
@@ -15,10 +16,8 @@ dockerTemplate{
 
             stage('tag') {
                 container('clients') {
-                    gitTag{
-                        releaseVersion = newVersion
-                        skipVersionPrefix = true
-                    }
+                    flow.setupGitSSH()
+                    flow.pushTag(newVersion)
                 }
             }
 
